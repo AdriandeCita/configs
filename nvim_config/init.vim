@@ -42,9 +42,9 @@ Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 " Snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'scrooloose/nerdcommenter'
 
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'jiangmiao/auto-pairs'
+
 
 
 
@@ -122,9 +122,12 @@ imap <C-backspace> ú
 imap <C-\> ú
 imap <C-delete> ø
 
-map <c-l> :tabn<cr>
-map <c-h> :tabp<cr>
-map <c-n> :tabnew<cr>
+map <C-l> :tabn<cr>
+map <C-h> :tabp<cr>
+map <C-n> :tabnew<cr>
+map <C-a> :NERDTreeToggle<cr>
+
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 
 " Neomake and other build commands (ctrl-b)
 nnoremap <C-b> :w<cr>:Neomake<cr>
