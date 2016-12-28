@@ -42,16 +42,14 @@ Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 " Snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'jiangmiao/auto-pairs'
-
-
-
+Plugin 'scrooloose/nerdcommenter'
+" Autoformatter
+Plugin 'Chiel92/vim-autoformat'
+" Line swapper
+Plugin 'AdriandeCita/vim-swap-lines'
 " Status bar mods
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
-
 " Tab completion
 Plugin 'ervandew/supertab'
 
@@ -78,14 +76,28 @@ endfunction
 
 """"""" General coding stuff """""""
 
-set t_Co=256                                                                    "Set 256 colors
-set title                                                                       "change the terminal's title
-set number                                                                      "Line numbers are good
-set history=500                                                                 "Store lots of :cmdline history
-set showcmd                                                                     "Show incomplete cmds down the bottom
-set noshowmode                                                                  "Hide showmode because of the powerline plugin
-set gdefault                                                                    "Set global flag for search and replace
-set gcr=a:blinkon500-blinkwait500-blinkoff500                                   "Set cursor blinking rate
+"Set 256 colors
+set t_Co=256
+"change the terminal's title
+set title
+"Line numbers are good
+set number
+"Store lots of :cmdline history
+set history=500
+"Show incomplete cmds down the bottom
+set showcmd
+"Hide showmode because of the powerline plugin
+set noshowmode
+"Set global flag for search and replace
+set gdefault
+"Set cursor blinking rate
+highlight Cursor guifg=white guibg=black
+highlight iCursor guifg=white guibg=steelblue
+set gcr=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
+
 set cursorline                                                                  "Highlight current line
 set smartcase                                                                   "Smart case search if there is uppercase
 set ignorecase                                                                  "case insensitive search
@@ -95,8 +107,8 @@ set timeoutlen=1000 ttimeoutlen=200                                             
 set fileencoding=utf-8                                                          "Set utf-8 encoding on write
 set wrap                                                                        "Enable word wrap
 set linebreak                                                                   "Wrap lines at convenient points
-set listchars=tab:\ \ ,trail:·                                                  "Set trails for tabs and spaces
-set list                                                                        "Enable listchars
+"set listchars=tab:\ \ ,trail:·                                                  "Set trails for tabs and spaces
+"set list                                                                        "Enable listchars
 set lazyredraw                                                                  "Do not redraw on registers and macros
 set completeopt-=preview                                                        "Disable preview for autocomplete
 set background=dark                                                             "Set background to dark
@@ -107,13 +119,20 @@ set shiftwidth=4  " operation >> indents 2 columns; << unindents 2 columns
 set expandtab     " insert spaces when hitting TABs
 set softtabstop=4 " insert/delete 2 spaces when hitting a TAB/BACKSPACE
 
+set listchars=tab:!▸,trail:·,nbsp:-
+set list
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
+
 syntax on                                                                       "turn on syntax highlighting
+"transparent bg
+hi Normal ctermbg=none
 
 colorscheme hybrid_material
 
 """"""" Keybindings """""""
 " Set up leaders
-let mapleader=","
+let mapleader="/"
 let maplocalleader="\\"
 
 " Linux / windows ctrl+backspace ctrl+delete
@@ -122,9 +141,12 @@ imap <C-backspace> ú
 imap <C-\> ú
 imap <C-delete> ø
 
-map <c-l> :tabn<cr>
-map <c-h> :tabp<cr>
-map <c-n> :tabnew<cr>
+map <C-l> :tabn<cr>
+map <C-h> :tabp<cr>
+map <C-n> :tabnew<cr>
+map <C-a> :NERDTreeToggle<cr>
+
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 
 " Neomake and other build commands (ctrl-b)
 nnoremap <C-b> :w<cr>:Neomake<cr>
