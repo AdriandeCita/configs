@@ -52,7 +52,8 @@ Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 " Tab completion
 Plugin 'ervandew/supertab'
-
+" Minimap
+Plugin 'severin-lemaignan/vim-minimap'
 
 " After all plugins...
 call vundle#end()
@@ -78,18 +79,25 @@ endfunction
 
 "Set 256 colors
 set t_Co=256
+
 "change the terminal's title
 set title
+
 "Line numbers are good
 set number
+
 "Store lots of :cmdline history
 set history=500
+
 "Show incomplete cmds down the bottom
 set showcmd
+
 "Hide showmode because of the powerline plugin
 set noshowmode
+
 "Set global flag for search and replace
 set gdefault
+
 "Set cursor blinking rate
 highlight Cursor guifg=white guibg=black
 highlight iCursor guifg=white guibg=steelblue
@@ -98,37 +106,76 @@ set guicursor+=i:ver100-iCursor
 set guicursor+=n-v-c:blinkon0
 set guicursor+=i:blinkwait10
 
-set cursorline                                                                  "Highlight current line
-set smartcase                                                                   "Smart case search if there is uppercase
-set ignorecase                                                                  "case insensitive search
-set showmatch                                                                   "Highlight matching bracket
-set nostartofline                                                               "Jump to first non-blank character
-set timeoutlen=1000 ttimeoutlen=200                                             "Reduce Command timeout for faster escape and O
-set fileencoding=utf-8                                                          "Set utf-8 encoding on write
-set wrap                                                                        "Enable word wrap
-set linebreak                                                                   "Wrap lines at convenient points
-"set listchars=tab:\ \ ,trail:·                                                  "Set trails for tabs and spaces
-"set list                                                                        "Enable listchars
-set lazyredraw                                                                  "Do not redraw on registers and macros
-set completeopt-=preview                                                        "Disable preview for autocomplete
-set background=dark                                                             "Set background to dark
-set hidden                                                                      "Hide buffers in background
-set conceallevel=2 concealcursor=i                                              "neosnippets conceal marker
-set splitright                                                                  "Set up new splits positions
-set shiftwidth=4  " operation >> indents 2 columns; << unindents 2 columns
-set expandtab     " insert spaces when hitting TABs
-set softtabstop=4 " insert/delete 2 spaces when hitting a TAB/BACKSPACE
+"Highlight current line
+set cursorline
 
+"Smart case search if there is uppercase
+set smartcase
+
+"case insensitive search
+set ignorecase
+
+"Highlight matching bracket
+set showmatch
+
+"Jump to first non-blank character
+set nostartofline
+
+"Reduce Command timeout for faster escape and O
+set timeoutlen=1000 ttimeoutlen=200
+
+"Set utf-8 encoding on write
+set fileencoding=utf-8
+
+"Enable word wrap
+set wrap
+
+"Wrap lines at convenient points
+set linebreak
+
+"Do not redraw on registers and macros
+set lazyredraw
+
+"Disable preview for autocomplete
+set completeopt-=preview
+
+"Set background to dark
+set background=dark
+
+"Hide buffers in background
+set hidden
+
+"neosnippets conceal marker
+set conceallevel=2 concealcursor=i
+
+"Set up new splits positions
+set splitright
+
+" operation >> indents 2 columns; << unindents 2 columns
+set shiftwidth=4
+
+" insert spaces when hitting TABs
+set expandtab
+
+" insert/delete 2 spaces when hitting a TAB/BACKSPACE
+set softtabstop=4
+
+"Set trails for tabs and spaces
 set listchars=tab:!▸,trail:·,nbsp:-
 set list
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
-syntax on                                                                       "turn on syntax highlighting
+"turn on syntax highlighting
+syntax on
+colorscheme hybrid_material
+
 "transparent bg
 hi Normal ctermbg=none
 
-colorscheme hybrid_material
+" set ruler
+set colorcolumn=80
+highlight ColorColumn ctermbg=238 guibg=#d16d0a
 
 """"""" Keybindings """""""
 " Set up leaders
